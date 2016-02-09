@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Assessment for Yieldify">
+        <meta name="author" content="Julien Singler">
+        <title>Gravity simulation and bouncing</title>
+        <script src='all.min.js'></script>
+        <style type="text/css">
+            #control_panel {position:absolute;z-index:100;}
+            #renderer_name {text-align:center;}
+        </style>
+    </head>
+    <body>
+        <div id="renderer_name">Canvas</div>
+        <div id="control_panel">
+            <button onclick="core.change_renderer('Canvas');">Canvas</button> <button onclick="core.change_renderer('HTML');">HTML</button>
+            <div id="number_particles">0</div>
+            <button id="pause_resume" onclick="core.pause(event)">Pause</button>
+            <br />
+            <input type="radio" name="nb_particles" onclick="core.change_number_particles(1)" checked="checked" /> 1
+            <br />
+            <input type="radio" name="nb_particles" onclick="core.change_number_particles(5)" /> 5
+            <br />
+            <input type="radio" name="nb_particles" onclick="core.change_number_particles(10)" /> 10
+            <br />
+            <input type="radio" name="nb_particles" onclick="core.change_number_particles(50)" /> 50
+            <br />
+            <input type="radio" name="nb_particles" onclick="core.change_number_particles(100)" /> 100
+        </div>
+    </body>
+</html>
