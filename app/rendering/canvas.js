@@ -1,3 +1,5 @@
+/* Author: Julien Singler
+Description: Canvas class */
 function Canvas(arguments){
     this.colors = arguments.colors;
     this.canvas = this.generate_dom();

@@ -1,3 +1,5 @@
+/* Author: Julien Singler
+Description: HTML class */
 function HTML(arguments){
     var css = "\n\t.particle{display:block;z-index:50;position:absolute;width:10px;height:10px;border-radius:10px;background-color:black;}\n";
     this.addStyleTag(css);

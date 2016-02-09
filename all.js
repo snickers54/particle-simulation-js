@@ -1,3 +1,5 @@
+/* Author: Julien Singler
+Description: Particle class */
 function Particle(x, y) {
     // kind of private attributes
     this.gravity = 0.0981;
@@ -76,6 +78,8 @@ Particle.prototype.__get = function(key) {
 Particle.prototype.__set = function(key, value) {
     this.data[key] = value;
 };
+/* Author: Julien Singler
+Description: Settings class */
 function Settings() {
 
 }
@@ -101,6 +105,8 @@ Settings.prototype.display_renderer_name = function(type){
     var dom = document.getElementById("renderer_name");
     dom.innerHTML = type + " in use !";
 };
+/* Author: Julien Singler
+Description: HTML class */
 function HTML(arguments){
     var css = "\n\t.particle{display:block;z-index:50;position:absolute;width:10px;height:10px;border-radius:10px;background-color:black;}\n";
     this.addStyleTag(css);
@@ -183,6 +189,8 @@ HTML.prototype.draw = function(particle) {
     dom.style.top = coordinates.y+"px";
     dom.style.left = coordinates.x+"px";
 };
+/* Author: Julien Singler
+Description: Canvas class */
 function Canvas(arguments){
     this.colors = arguments.colors;
     this.canvas = this.generate_dom();
@@ -223,6 +231,9 @@ Canvas.prototype.generate_dom = function(){
 	document.body.appendChild(new_div);
 	return new_div;
 };
+/* Author: Julien Singler
+Description: Renderer kind of Interface  */
+
 // It was used more than once, so I refactored this to a function..
 function check_implementation(method, instance) {
     if (typeof instance[method] !== "function") {
@@ -286,6 +297,9 @@ Renderer.prototype.remove = function(particle) {
     this.instance[this.type].remove(particle);
     return true;
 };
+/* Author: Julien Singler
+Description: Core Class */
+
 function Core(arguments) {
     // easier to return ..
     this.stopped = null;
@@ -395,6 +409,9 @@ Core.prototype.tick = function(timestamp) {
     }
 
 };
+/* Author: Julien Singler
+Description: starting point */
+
 var core;
 window.onload = function(){
     core = new Core({type:"Canvas", colors:['black', 'blue', 'orange', 'brown', 'red', 'green', 'grey', 'whitesmoke', 'pink', 'darkblue', 'purple']});
@@ -403,6 +420,7 @@ window.onload = function(){
         // It seems, this code is to fix < IE9 even system ..
         if (event === undefined) event = window.event;
         var target = 'target' in event? event.target : event.srcElement;
+        // this part is probably the most awful thing I've wrote so far ..
         if (target.getAttribute("id") !== "pause_resume"
             && target.getAttribute("name") !== "nb_particles" &&
             target.tagName.toLowerCase() !== "button") {

@@ -1,3 +1,6 @@
+/* Author: Julien Singler
+Description: Renderer kind of Interface  */
+
 // It was used more than once, so I refactored this to a function..
 function check_implementation(method, instance) {
     if (typeof instance[method] !== "function") {

@@ -1,3 +1,5 @@
+/* Author: Julien Singler
+Description: Settings class */
 function Settings() {
 
 }

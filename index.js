@@ -1,3 +1,6 @@
+/* Author: Julien Singler
+Description: starting point */
+
 var core;
 window.onload = function(){
     core = new Core({type:"Canvas", colors:['black', 'blue', 'orange', 'brown', 'red', 'green', 'grey', 'whitesmoke', 'pink', 'darkblue', 'purple']});

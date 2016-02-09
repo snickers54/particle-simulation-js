@@ -1,3 +1,5 @@
+/* Author: Julien Singler
+Description: Particle class */
 function Particle(x, y) {
     // kind of private attributes
     this.gravity = 0.0981;

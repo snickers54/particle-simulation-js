@@ -1,3 +1,6 @@
+/* Author: Julien Singler
+Description: Core Class */
+
 function Core(arguments) {
     // easier to return ..
     this.stopped = null;
