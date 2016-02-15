@@ -8,7 +8,7 @@ function Particle(x, y) {
 
     // define speed vector
     var rho = Math.random() * 10;
-    var angle = Math.random() * Math.PI * 2;
+    var angle = Math.random() * Math.PI;
     this.coordinates = {x: x, y: y};
     this.vector = {x: Math.cos(angle) * rho, y: Math.sin(angle) * rho};
 }
