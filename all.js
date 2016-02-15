@@ -3,13 +3,13 @@ Description: Particle class */
 function Particle(x, y) {
     // kind of private attributes
     this.gravity = 0.0981;
+    this.bounce_coeff = 0.8;
     this.data = {};
     this.bounce = {bottom:true, ticks:0, static:false};
 
-    // define speed vector, with magic number
+    // define speed vector
     var rho = Math.random() * 10;
-    // because radians have a form like : PI / something, and Math.random is giving a number between 0 and 1..
-    var angle = Math.random() * Math.PI;
+    var angle = Math.random() * Math.PI * 2;
     this.coordinates = {x: x, y: y};
     this.vector = {x: Math.cos(angle) * rho, y: Math.sin(angle) * rho};
 }
@@ -22,15 +22,18 @@ Particle.prototype.update = function() {
     this.coordinates.y += this.vector.y;
 
     if (this.coordinates.x < 0) {
-        this.vector.x *= -1;
+        this.vector.x *= -this.bounce_coeff;
+        this.vector.y *= this.bounce_coeff;
         this.coordinates.x = 0;
     }
     if (this.coordinates.x >= this.max_width) {
-        this.vector.x *= -1;
+        this.vector.x *= -this.bounce_coeff;
+        this.vector.y *= this.bounce_coeff;
         this.coordinates.x = this.max_width;
     }
     if (this.coordinates.y <= 0) {
-        this.vector.y *= -1;
+        this.vector.y *= - this.bounce_coeff;
+        this.vector.x *= this.bounce_coeff;
         this.coordinates.y = 0;
     }
     this.bounce.bottom = false;
@@ -40,12 +43,12 @@ Particle.prototype.update = function() {
             this.bounce.static = true;
         }
         this.bounce.ticks = 0;
-        this.vector.y *= -1;
+        this.vector.y *= - this.bounce_coeff;
+        this.vector.x *= this.bounce_coeff;
         this.coordinates.y = this.max_height;
     } else {
         this.bounce.ticks += 1;
     }
-    // Met à jour la vitesse avec l'accélération (gravité)
     this.vector.y += this.gravity;
     // console.log(this.vector);
 };

@@ -29,7 +29,7 @@ Particle.prototype.update = function() {
     if (this.coordinates.x >= this.max_width) {
         this.vector.x *= -this.bounce_coeff;
         this.vector.y *= this.bounce_coeff;
-        this.coordinates.x = this.max_width - 1;
+        this.coordinates.x = this.max_width;
     }
     if (this.coordinates.y <= 0) {
         this.vector.y *= - this.bounce_coeff;
@@ -45,11 +45,10 @@ Particle.prototype.update = function() {
         this.bounce.ticks = 0;
         this.vector.y *= - this.bounce_coeff;
         this.vector.x *= this.bounce_coeff;
-        this.coordinates.y = this.max_height - 1;
+        this.coordinates.y = this.max_height;
     } else {
         this.bounce.ticks += 1;
     }
-    // Met à jour la vitesse avec l'accélération (gravité)
     this.vector.y += this.gravity;
     // console.log(this.vector);
 };
