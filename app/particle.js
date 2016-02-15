@@ -6,8 +6,9 @@ function Particle(x, y) {
     this.data = {};
     this.bounce = {bottom:true, ticks:0, static:false};
 
-    // define speed vector
+    // define speed vector, with magic number
     var rho = Math.random() * 10;
+    // because radians have a form like : PI / something, and Math.random is giving a number between 0 and 1..
     var angle = Math.random() * Math.PI;
     this.coordinates = {x: x, y: y};
     this.vector = {x: Math.cos(angle) * rho, y: Math.sin(angle) * rho};
