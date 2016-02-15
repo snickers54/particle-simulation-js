@@ -21,6 +21,7 @@ Particle.prototype.update = function() {
     this.coordinates.x += this.vector.x;
     this.coordinates.y += this.vector.y;
 
+    // bouncing effects and vector calculus from https://www.compuscene.org/?p=156
     if (this.coordinates.x < 0) {
         this.vector.x *= -this.bounce_coeff;
         this.vector.y *= this.bounce_coeff;
