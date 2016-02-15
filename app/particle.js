@@ -3,7 +3,6 @@ Description: Particle class */
 function Particle(x, y) {
     // kind of private attributes
     this.gravity = 0.0981;
-    this.bounce_coeff = 0.8;
     this.data = {};
     this.bounce = {bottom:true, ticks:0, static:false};
 
@@ -22,18 +21,15 @@ Particle.prototype.update = function() {
     this.coordinates.y += this.vector.y;
 
     if (this.coordinates.x < 0) {
-        this.vector.x *= -this.bounce_coeff;
-        this.vector.y *= this.bounce_coeff;
+        this.vector.x *= -1;
         this.coordinates.x = 0;
     }
     if (this.coordinates.x >= this.max_width) {
-        this.vector.x *= -this.bounce_coeff;
-        this.vector.y *= this.bounce_coeff;
+        this.vector.x *= -1;
         this.coordinates.x = this.max_width - 1;
     }
     if (this.coordinates.y <= 0) {
-        this.vector.y *= - this.bounce_coeff;
-        this.vector.x *= this.bounce_coeff;
+        this.vector.y *= -1;
         this.coordinates.y = 0;
     }
     this.bounce.bottom = false;
@@ -43,8 +39,7 @@ Particle.prototype.update = function() {
             this.bounce.static = true;
         }
         this.bounce.ticks = 0;
-        this.vector.y *= - this.bounce_coeff;
-        this.vector.x *= this.bounce_coeff;
+        this.vector.y *= -1;
         this.coordinates.y = this.max_height - 1;
     } else {
         this.bounce.ticks += 1;
