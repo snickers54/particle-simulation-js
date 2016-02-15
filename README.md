@@ -1,10 +1,8 @@
-# Particles and gravity simulation for Yieldify
+# Particles and gravity simulation
 ---
 
 ## Introduction
 I found many ways to do this assignment, the easiest would be in a canvas, and more difficult directly with HTML. The challenge to do it with HTML is performance. Because DOM modification is expensive and by definition taking time. That's why react is using virtual DOM modifications.
-
-As I don't really believe Yieldify is using canvas on their clients websites. I will try not working only with canvas..
 
 I'm going to use JavaScript ES5, I could use ES6 with babel, but the generated code will be heavier just to get syntactic sugars ..
 I'm taking care of performance because I believe it's important for the success of this project.
