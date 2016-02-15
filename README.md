@@ -15,6 +15,7 @@ I'm also trying to limit at maximum external dependencies, like css files ..
 I created a docker to simplify build (concat and minify). But if you want to do it without docker, you just need to install `npm` then do `npm install -g uglify-js` and `make`.
 
 The docker is just here to build, it will exit when finished..
+If you want to start a server, just do `npm install; npm start`
 
 ## Implementation
 
