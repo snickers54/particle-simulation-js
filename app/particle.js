@@ -3,11 +3,13 @@ Description: Particle class */
 function Particle(x, y) {
     // kind of private attributes
     this.gravity = 0.0981;
+    // it ensures we are going to lose speed when bouncing..
     this.bounce_coeff = 0.8;
     this.data = {};
     this.bounce = {bottom:true, ticks:0, static:false};
 
     // define speed vector
+    // don't forget Math.random is givin a number between 0 an 1,
     var rho = Math.random() * 10;
     var angle = Math.random() * Math.PI * 2;
     this.coordinates = {x: x, y: y};
@@ -22,6 +24,7 @@ Particle.prototype.update = function() {
     this.coordinates.y += this.vector.y;
 
     // bouncing effects and vector calculus from https://www.compuscene.org/?p=156
+    // there is however not 50 ways to write this code..
     if (this.coordinates.x < 0) {
         this.vector.x *= -this.bounce_coeff;
         this.vector.y *= this.bounce_coeff;
@@ -37,9 +40,12 @@ Particle.prototype.update = function() {
         this.vector.x *= this.bounce_coeff;
         this.coordinates.y = 0;
     }
+    // I changed the way it calculate how a particle should stop living,
+    // I just count how many bounce there is since the last side touched..
     this.bounce.bottom = false;
     if (this.coordinates.y > this.max_height) {
         this.bounce.bottom = true;
+        // if I bounce before 20 cycles / ticks It means I'm close to the side and not going enough far, so I'm a dying particle..
         if (this.bounce.ticks < 20) {
             this.bounce.static = true;
         }
